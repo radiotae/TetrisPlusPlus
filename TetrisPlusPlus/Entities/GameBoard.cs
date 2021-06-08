@@ -58,6 +58,8 @@ namespace TetrisPlusPlus.Entities
         {
             List<AbstractTetrisPiece> newBag = new List<AbstractTetrisPiece>();
 
+            newBag.Add(new JPiece());
+
             
 
             byte p = TOTAL_PIECES;

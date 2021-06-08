@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,5 +10,6 @@ namespace TetrisPlusPlus.Entities
     {
         public bool IsEmpty { get; protected set; }
 
+        
     }
 }

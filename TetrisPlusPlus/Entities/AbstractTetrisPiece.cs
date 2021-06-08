@@ -6,19 +6,22 @@ using System.Text;
 namespace TetrisPlusPlus.Entities
 {
 
-    abstract class AbstractTetrisPiece
+    abstract class AbstractTetrisPiece : ITetrisPiece
     {
-        public Point[] BlockCoord;
-        public CurrentRotation CurrRotation;
+        
+        public CurrentRotation CurrRotation { get; set; }
 
+        public Point[] BlockCoord { get; set; }
         public PieceColor Color { get; protected set; }
-
-
         public List<Point[]> Rotations { get; protected set; }
+
 
         public AbstractTetrisPiece()
         {
             CurrRotation = CurrentRotation.Base;
+
         }
+
+        
     }
 }
