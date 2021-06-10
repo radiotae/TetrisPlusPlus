@@ -14,9 +14,9 @@ namespace TetrisPlusPlus.Entities
         public const byte TOTAL_PIECES = 7;
 
         private AbstractBlock[,] _grid;
-        List<AbstractTetrisPiece> _pieceList;
+        List<ITetrisPiece> _pieceList;
 
-        private AbstractTetrisPiece _holdPiece;
+        private ITetrisPiece _holdPiece;
 
         private Random _random;
 
@@ -51,15 +51,17 @@ namespace TetrisPlusPlus.Entities
                 }
             }
 
-            _pieceList = new List<AbstractTetrisPiece>();
+            _holdPiece = null;
+
+            _pieceList = new List<ITetrisPiece>();
 
             _pieceList.AddRange(MakeNewBag());
             _pieceList.AddRange(MakeNewBag());
         }
 
-        private List<AbstractTetrisPiece> MakeNewBag()
+        private List<ITetrisPiece> MakeNewBag()
         {
-            List<AbstractTetrisPiece> newBag = new List<AbstractTetrisPiece>();
+            List<ITetrisPiece> newBag = new List<ITetrisPiece>();
 
             newBag.Add(new JPiece());
             newBag.Add(new OPiece());
@@ -76,12 +78,33 @@ namespace TetrisPlusPlus.Entities
             {
                 p--;
                 int y = _random.Next(0, p + 1);
-                AbstractTetrisPiece temp = newBag[y];
+                ITetrisPiece temp = newBag[y];
                 newBag[y] = newBag[p];
                 newBag[p] = temp;
             }
 
             return newBag;
+        }
+
+        public void SwapHoldPiece()
+        {
+            _pieceList[0].CurrBlockCoord = _pieceList[0].StartBlockCoord;
+
+            if (_holdPiece == null)
+            {
+                
+
+                _holdPiece = _pieceList[0];
+
+                _pieceList.Remove(_pieceList[0]);
+            }
+            else
+            {
+                ITetrisPiece piece = _holdPiece;
+                _holdPiece = _pieceList[0];
+                _pieceList[0] = piece;
+            }
+
         }
     }
 }

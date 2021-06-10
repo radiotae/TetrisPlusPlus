@@ -7,7 +7,9 @@ namespace TetrisPlusPlus.Entities
 {
     interface ITetrisPiece
     {
-        public Point[] BlockCoord { get; set; }
+        public Point[] StartBlockCoord { get; }
+
+        public Point[] CurrBlockCoord { get; set; }
         public CurrentRotation CurrRotation { get; set; }
 
         public PieceColor Color { get; }

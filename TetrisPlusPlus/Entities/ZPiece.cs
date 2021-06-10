@@ -10,13 +10,15 @@ namespace TetrisPlusPlus.Entities
 
         public ZPiece() : base()
         {
-            BlockCoord = new Point[4]
+            StartBlockCoord = new Point[4]
             {
                 new Point(3,3),
                 new Point(4,3),
                 new Point(4,4),
                 new Point(5,4)
             };
+
+            CurrBlockCoord = StartBlockCoord;
 
             Color = PieceColor.Red;
         }

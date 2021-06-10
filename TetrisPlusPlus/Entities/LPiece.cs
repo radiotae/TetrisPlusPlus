@@ -9,13 +9,15 @@ namespace TetrisPlusPlus.Entities
     {
         public LPiece() : base()
         {
-            BlockCoord = new Point[4]
+            StartBlockCoord = new Point[4]
             {
                 new Point(3,4),
                 new Point(4,4),
                 new Point(5,3),
                 new Point(5,4)
             };
+
+            CurrBlockCoord = StartBlockCoord;
 
             Color = PieceColor.Orange;
         }

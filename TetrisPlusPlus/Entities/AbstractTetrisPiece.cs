@@ -10,11 +10,12 @@ namespace TetrisPlusPlus.Entities
     {
         
         public CurrentRotation CurrRotation { get; set; }
+        public Point[] CurrBlockCoord { get; set; }
 
-        public Point[] BlockCoord { get; set; }
+        public Point[] StartBlockCoord { get; protected set; }
         public PieceColor Color { get; protected set; }
         public List<Point[]> Rotations { get; protected set; }
-
+        
 
         public AbstractTetrisPiece()
         {
