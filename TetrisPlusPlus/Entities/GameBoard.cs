@@ -23,8 +23,8 @@ namespace TetrisPlusPlus.Entities
         public GameBoard(Point loc)
         {
             _random = new Random();
-            
 
+            ResetBoard();
 
 
         }
@@ -51,7 +51,10 @@ namespace TetrisPlusPlus.Entities
                 }
             }
 
+            _pieceList = new List<AbstractTetrisPiece>();
 
+            _pieceList.AddRange(MakeNewBag());
+            _pieceList.AddRange(MakeNewBag());
         }
 
         private List<AbstractTetrisPiece> MakeNewBag()
@@ -59,6 +62,12 @@ namespace TetrisPlusPlus.Entities
             List<AbstractTetrisPiece> newBag = new List<AbstractTetrisPiece>();
 
             newBag.Add(new JPiece());
+            newBag.Add(new OPiece());
+            newBag.Add(new ZPiece());
+            newBag.Add(new SPiece());
+            newBag.Add(new LinePiece());
+            newBag.Add(new TPiece());
+            newBag.Add(new LPiece());
 
             
 
@@ -67,7 +76,7 @@ namespace TetrisPlusPlus.Entities
             {
                 p--;
                 int y = _random.Next(0, p + 1);
-                TetrisPieces temp = newBag[y];
+                AbstractTetrisPiece temp = newBag[y];
                 newBag[y] = newBag[p];
                 newBag[p] = temp;
             }
